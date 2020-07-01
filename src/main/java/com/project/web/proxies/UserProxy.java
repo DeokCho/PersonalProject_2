@@ -7,12 +7,20 @@ import java.util.function.BiFunction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.project.web.domains.MemberDTO;
+import com.project.web.enums.Sql;
+import com.project.web.mappers.MemberMapper;
 import com.project.web.mappers.TxMapper;
 
+// 메서드에만 트랜잭션을 거는 건데 클래스에 걸어버리면 내부 메소드 전부가 트랜잭션 걸림
 @Component("manager") // manager란 이름으로 객체가 정해짐
 public class UserProxy extends Proxy{
 	@Autowired TxMapper txMapper;
+	@Autowired Box<String> box; // HashMap은 @Component 못걸음(자바 유틸에 있어서) - 충돌남
+						//	Box는 내가 만든 것이기 때문에 @Component 걸수 있다.
+	@Autowired MemberMapper memberMapper; 
 	
 	public String makeBirthday() {
 		// 가우스 정규분포도에 따른 작업 진행
@@ -80,5 +88,28 @@ public class UserProxy extends Proxy{
 		Collections.shuffle(name);
 		String fullname = fname.get(0) + name.get(0) + name.get(1);
 		return fullname;
+	}
+	public MemberDTO makeUser() {
+		return new MemberDTO(makeUserid(), makeUsername(), "1", 
+				makeBirthday(), makeGender(), makeTelephone(), "2020", "" );
+	}
+	
+	// AOP 중에서 반복을 함. 메서드가 한번 작동할때 내부가 횟수만큼 가동
+	// 트랜잭션이 종료되기 전까지 종료되지 않음
+	// 트랜잭션 관리자가 @Transacition을 모아서 시작하자마자 한번에 받아서 관리함
+	// 서브릿 컨텍스트의 트랜잭션 매니저가 관리함. 
+	@Transactional
+	public void insertUsers(int count) {
+		for(int i=0; i<count; i++) {
+			txMapper.insertMember(makeUser());
+			// ORM은 원래 1:1 맵핑 구조, 하지만
+		}
+	}
+	
+	public void truncateMembers() {
+		box.clear();
+		box.put("TRUNCATE_MEMBERS", Sql.TRUNCATE_MEMBERS.toString());
+		memberMapper.truncateMember(box.get());
+		
 	}
 }

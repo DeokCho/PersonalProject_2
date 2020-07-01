@@ -1,7 +1,7 @@
 package com.project.web.enums;
 
 public enum Sql {
-	CREATE_DB, CREATE_PERSONS, DROP_PERSONS, TRUNCATE_PERSONS,
+	CREATE_DB, CREATE_MEMBERS, DROP_MEMBERS, TRUNCATE_MEMBERS,
 	CREATE_ARTICLES, DROP_ARTICLES, TRUNCATE_ARTICLES,
 	CREATE_IMAGES, DROP_IMAGES, TRUNCATE_IMAGES;
 	// Truncate 는 메타데이터만 남기고 다 날리는 것
@@ -13,7 +13,7 @@ public enum Sql {
 		case CREATE_DB:
 			result = "create database mariadb";
 			break;
-		case CREATE_PERSONS:
+		case CREATE_MEMBERS:
 			result = "create table persons(userid varchar(30)primary key,"+ 
                     " password varchar(30) ," +
                     " name varchar(30) ," +
@@ -21,11 +21,11 @@ public enum Sql {
                     " gender varchar(10) ," +
                     " telephone varchar(30))ENGINE=InnoDB DEFAULT CHARSET=UTF8" ;
 			break;
-		case DROP_PERSONS:
+		case DROP_MEMBERS:
 			result = "drop table persons";
 			break;
 		
-		case TRUNCATE_PERSONS:
+		case TRUNCATE_MEMBERS:
 			result = "truncate table persons";
 			break;
 		case TRUNCATE_ARTICLES :

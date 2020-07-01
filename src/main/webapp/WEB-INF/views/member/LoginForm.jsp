@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<h2>Login Form</h2>
 
-<form action="/action_page.php" method="post">
-
+<form id="LoginForm">
   <div class="container">
     <label for="userid"><b>UserID</b></label>
-    <input type="text" placeholder="Enter userid" name="userid" required>
+    <input id="userid" type="text" placeholder="Enter userid" name="userid" required>
 
     <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name=""password"" required>
+    <input id="password" type="password" placeholder="Enter Password" name=""password"" required>
         
     <button id="loginBtn" type="submit">Login</button>
     <label>
@@ -26,7 +24,7 @@
 <script>
 document.getElementById('loginBtn').addEventListener('click',function(e){
 	e.preventDefault()
-	alert('LoginForm 진입')
+	alert('init 진입->')
 	person.init()
 	alert('init 완료')
 	person.login({"userid": document.getElementById('userid').value,

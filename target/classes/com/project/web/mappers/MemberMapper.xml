@@ -2,6 +2,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.web.mappers.MemberMapper">
+<!-- 이넘에 있는 쿼리문을 이곳에서 실행할 수 있는 방법을 알려주겠다. 
+	트랜잭션은 여기에서 넣으면 엄청나게 느리니까 자바에서 처리할 것--> 
+	<select id="truncateMember" parameterType="hashMap">
+		${TRUNCATE_MEMBERS} <!-- 외부에서 주입되는 녀석은 모두 $ 표시  // '#{}' => ${}로 표시 -->
+	</select>
+	
+	<select id="createDB" parameterType="hashMap">
+		${CREATE_DB}
+	</select>
 
 </mapper>
 

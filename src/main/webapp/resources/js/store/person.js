@@ -3,9 +3,11 @@ person = (function(){
 	let _, javascript, session
 	
 	let init = function(){
+		alert('init 진입<-')
 		 _ = sessionStorage.getItem('context'),
 		 javascript = sessionStorage.getItem('javascript'),
 		 session = sessionStorage.getItem('session')
+		 alert('init 종료')
 	}
 	let join = function(payload){
 		$.ajax({
@@ -27,7 +29,7 @@ person = (function(){
 		})
 	}
 	let login = function(payload){
-		alert('person 중 login 진입')
+		alert('login function 가동')
 		$.ajax({
 			url : _+`/member/members/${payload.userid}`,
 			type: 'POST',
@@ -35,8 +37,8 @@ person = (function(){
 			dataType: 'json',
 			contentType: 'application/json; charset=UTF-8',
 			success: function(res){
-				alert(res)
-				alert('person 중 login success 진입')
+				alert('로그인 성공')
+				location.href = _+`/`
 			},
 			error: function(err){
 				alert(err)
