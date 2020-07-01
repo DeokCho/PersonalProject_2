@@ -1,0 +1,37 @@
+
+drop table if exists baseballs;
+
+create table baseballs(
+	referenceSeq INT PRIMARY KEY AUTO_INCREMENT, 
+	playerName VARCHAR(20), 
+	gamesPlayed INT, 
+	atBat INT,
+	runs INT, 
+	hits INT, 
+	doubles INT, 
+	triples VARCHAR(20), 
+	homeRuns INT, 
+	runsBattedIn INT,
+	walks INT, 
+	strikeouts INT,
+	stolenBases INT, 
+	caughtStealing INT, 
+	battingAverage DOUBLE(6,3),
+	onBasePercentage DOUBLE(6,3), 
+	sluggingPercentage DOUBLE(6,3)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+drop table if exists members;
+
+create table members(
+	identity VARCHAR(10) PRIMARY KEY UNIQUE,
+	password VARCHAR(10), 
+	name VARCHAR(10), 
+	email VARCHAR(20), 
+	addr VARCHAR(50)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+show tables;
+select * from baseballs;
+select * from members;
+
