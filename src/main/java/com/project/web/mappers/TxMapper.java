@@ -1,4 +1,4 @@
-package com.project.web.tx;
+package com.project.web.mappers;
 
 import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Repository;
