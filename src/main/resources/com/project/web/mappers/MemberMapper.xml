@@ -11,6 +11,10 @@
 	<select id="createDB" parameterType="hashMap">
 		${CREATE_DB}
 	</select>
+	<select id="selectByMemberIdAndPassword"
+		resultType="com.project.web.domains.MemberDTO"
+		parameterType="com.project.web.domains.MemberDTO">
+	</select>
 
 </mapper>
 

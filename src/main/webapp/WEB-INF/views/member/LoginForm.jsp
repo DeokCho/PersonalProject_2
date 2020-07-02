@@ -24,12 +24,9 @@
 <script>
 document.getElementById('loginBtn').addEventListener('click',function(e){
 	e.preventDefault()
-	alert('init 진입->')
 	person.init()
-	alert('init 완료')
 	person.login({"userid": document.getElementById('userid').value,
         		"password": document.getElementById('password').value})
-	alert('login 완료')
 })
 </script>
 <style>

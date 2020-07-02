@@ -16,4 +16,5 @@ public interface MemberMapper {
 	public void createUser(HashMap<String, String> paramMap);
 	public void dropUser(HashMap<String, String> paramMap);
 	public void truncateMember(HashMap<String, String> paramMap);
+	public MemberDTO selectByUseridAndPassword(MemberDTO member);
 }

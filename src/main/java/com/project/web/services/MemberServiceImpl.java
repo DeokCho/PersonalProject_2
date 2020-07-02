@@ -16,7 +16,7 @@ public class MemberServiceImpl implements MemberService {
 	private static final Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
 	
 	@Autowired MemberMapper memberMapper;
-
+	@Autowired MemberDTO member;
 
 	@Override
 	public void save() {
@@ -54,13 +54,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void delete() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void findByEmailAndUserId(String email, String userId) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -111,6 +104,12 @@ public class MemberServiceImpl implements MemberService {
 	public void findByEmailOrderByNameAsc(String email) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public MemberDTO findByUseridAndPassword(MemberDTO member) {
+		return memberMapper.selectByUseridAndPassword(member);
 	}
 
 	
