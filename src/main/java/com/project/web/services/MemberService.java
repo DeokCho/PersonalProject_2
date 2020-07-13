@@ -1,6 +1,7 @@
 package com.project.web.services;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,7 @@ public interface MemberService {
 	 public void save();
 	 public void update();
 	 public void findOne();
-	 public void findAll();	
+	 public List<MemberDTO> findAll();		
 	 public void count();
 	 public void delete();
 	 public MemberDTO findByUseridAndPassword(MemberDTO member);

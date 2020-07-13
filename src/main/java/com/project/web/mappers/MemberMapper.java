@@ -1,6 +1,7 @@
 package com.project.web.mappers;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +10,8 @@ import com.project.web.domains.MemberDTO;
 @Repository
 public interface MemberMapper {
 	public void insertUser(MemberDTO user);
-	public MemberDTO selectUserByIdPw(MemberDTO user);
+	public MemberDTO selectUserByIdPw(MemberDTO member);
+	public List<MemberDTO> selectAll();
 	public int existId(String userid);
 	public int countUsers();
 	public void createDB(HashMap<String, String> paramMap);

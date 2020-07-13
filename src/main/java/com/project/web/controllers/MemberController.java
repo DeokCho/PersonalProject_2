@@ -1,13 +1,15 @@
 package com.project.web.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,8 +21,8 @@ import com.project.web.domains.MemberDTO;
 import com.project.web.enums.Messenger;
 import com.project.web.services.MemberService;
 
-@RequestMapping("/member")
 @RestController
+@RequestMapping("/member")
 @SessionAttributes({"session"})
 public class MemberController {
 	@Autowired MemberService memberService;
@@ -49,6 +51,11 @@ public class MemberController {
 		session.setAttribute("Session", returnMember);
 		System.out.println("로그인 정보:"+session.getAttribute("session"));
 		return returnMember;
+	}
+	
+	@GetMapping("/members/list")
+	public void list(Model model){
+		model.addAttribute("members",memberService.findAll());
 	}
 }
 

@@ -1,6 +1,7 @@
 package com.project.web.services;
 
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,11 +40,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
-	@Override
-	public void findAll() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void count() {
@@ -110,6 +107,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDTO findByUseridAndPassword(MemberDTO member) {
 		return memberMapper.selectByUseridAndPassword(member);
+	}
+
+
+	/* (non-Javadoc)
+	 * @see com.project.web.services.MemberService#findAll()
+	 */
+	@Override
+	public List<MemberDTO> findAll() {
+		// TODO Auto-generated method stub
+		return memberMapper.selectAll();
 	}
 
 	
